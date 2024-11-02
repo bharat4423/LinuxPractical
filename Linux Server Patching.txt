@@ -1,0 +1,95 @@
+Linux Server Patching:-
+
+1. First we will take backup of Linux Servers Snapshot or Clone and drop pre notification mail to concern team.
+2. I will prepare prepatch checklist for servers patching
+3. I will check free space available or not on all mount points, main is (/, boot, swap, var Dir).
+4. I will also identify any package have to exclude or not. We wll verify with concern team.
+5. I will check and note down current kernel version.
+6. We will coordinate with application team 
+7. We will also check patching will be done by bigfix/Other automation tool or we can do manually.
+8. We will check all service what are running before patching
+9. Post patching verify all running services and pacages
+10. Post Patching and after verification we will drop post notification mail to concern team.
+
+
+==============================================================================================
+# yum update | # yum update -y   ( Full Patiching )
+
+# yum update --exclude java*
+# yum update --exclude mysql
+# yum update --exclude httpd
+# yum update --exclude docker
+==============================================================================================
+Q. How to check all running servecies in Linux server?
+Ans:- systemctl list-units --type=service --state=running
+
+===============================================================
+
+[root@server ~]# httpd -v
+Server version: Apache/2.4.6 (CentOS)
+Server built:   May 30 2023 14:01:11
+
+[root@server ~]# uname -r
+3.10.0-1160.95.1.el7.x86_64 --> old
+===========================
+[root@server ~]# uname -r
+3.10.0-1160.108.1.el7.x86_64 --> New
+
+=====================================
+Main Kernal Version
+Kernal major release 
+Kernal minor revision level
+Patch Number level of patches and bug fixes
+
+=================================
+3.10.0-957.21.2.el7.x86_64 
+3.10.0-957.21.2. 	
+3 – This is the main kernel version	
+.10 – This is the major release version	
+.0 – This is the minor revision level	
+( -957 – This is the Patch Number level of patches and bug fixes
+
+================
+
+[root@server ~]# uname -r
+3.10.0-1160.95.1.el7.x86_64
+[root@server ~]# [root@server ~]# uname -r
+bash: [root@server: command not found...
+[root@server ~]# cat /etc/os-release
+NAME="CentOS Linux"
+VERSION="7 (Core)"
+ID="centos"
+ID_LIKE="rhel fedora"
+VERSION_ID="7"
+PRETTY_NAME="CentOS Linux 7 (Core)"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:centos:centos:7"
+HOME_URL="https://www.centos.org/"
+BUG_REPORT_URL="https://bugs.centos.org/"
+
+CENTOS_MANTISBT_PROJECT="CentOS-7"
+CENTOS_MANTISBT_PROJECT_VERSION="7"
+REDHAT_SUPPORT_PRODUCT="centos"
+REDHAT_SUPPORT_PRODUCT_VERSION="7"
+===============
+
+[root@server ~]# df -Th
+Filesystem              Type      Size  Used Avail Use% Mounted on
+devtmpfs                devtmpfs  1.9G     0  1.9G   0% /dev
+tmpfs                   tmpfs     1.9G   23M  1.9G   2% /dev/shm
+tmpfs                   tmpfs     1.9G   21M  1.9G   2% /run
+tmpfs                   tmpfs     1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/mapper/centos-root xfs        36G  7.8G   28G  23% /
+/dev/sda1               xfs      1014M  282M  733M  28% /boot
+tmpfs                   tmpfs     378M   32K  378M   1% /run/user/0
+/dev/sr0                iso9660   4.4G  4.4G     0 100% /run/media/root/CentOS 7 x86_64
+
+=========
+Q.How to reboot linux system
+
+Q.What is diffrence between reboot and init 6
+
+
+
+
+

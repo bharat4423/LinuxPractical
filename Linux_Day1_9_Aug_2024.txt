@@ -1,0 +1,316 @@
+VIHAAN@DESKTOP-K6HD03L MINGW64 ~ (master)
+$ ssh root@192.168.20.140
+root@192.168.20.140's password:
+Last login: Fri Aug  9 16:57:34 2024
+[root@bharatitgyan ~]# touch dummy{1..5}
+[root@bharatitgyan ~]# ls
+anaconda-ks.cfg  cpu.txt  dummy2  dummy4  log.txt     packages.txt
+big.txt          dummy1   dummy3  dummy5  Memory.txt  root
+[root@bharatitgyan ~]# ls -ltr
+total 40
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+-rw-r--r--. 1 root root     0 Aug  9 17:01 dummy3
+-rw-r--r--. 1 root root     0 Aug  9 17:01 dummy2
+-rw-r--r--. 1 root root     0 Aug  9 17:01 dummy1
+-rw-r--r--. 1 root root     0 Aug  9 17:01 dummy5
+-rw-r--r--. 1 root root     0 Aug  9 17:01 dummy4
+[root@bharatitgyan ~]# rm dummy*
+rm: remove regular empty file ‘dummy1’? y
+rm: remove regular empty file ‘dummy2’? y
+rm: remove regular empty file ‘dummy3’? y
+rm: remove regular empty file ‘dummy4’? y
+rm: remove regular empty file ‘dummy5’? y
+[root@bharatitgyan ~]# ls -ltr
+total 40
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+[root@bharatitgyan ~]# touch album{1..4}_song{1..5}.mp4
+[root@bharatitgyan ~]# ls -lt
+total 40
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song3.mp4
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+[root@bharatitgyan ~]# ls -ltr
+total 40
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album1_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album4_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album3_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:08 album2_song4.mp4
+[root@bharatitgyan ~]# ls -l album*
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song1.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song2.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song3.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song4.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song5.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song1.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song2.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song3.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song4.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song5.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song1.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song2.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song3.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song4.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song5.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song1.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song2.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song3.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song4.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song5.mp4
+[root@bharatitgyan ~]# ls album*
+album1_song1.mp4  album1_song5.mp4  album2_song4.mp4  album3_song3.mp4  album4_song2.mp4
+album1_song2.mp4  album2_song1.mp4  album2_song5.mp4  album3_song4.mp4  album4_song3.mp4
+album1_song3.mp4  album2_song2.mp4  album3_song1.mp4  album3_song5.mp4  album4_song4.mp4
+album1_song4.mp4  album2_song3.mp4  album3_song2.mp4  album4_song1.mp4  album4_song5.mp4
+[root@bharatitgyan ~]# ls -l album*
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song1.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song2.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song3.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song4.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1_song5.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song1.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song2.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song3.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song4.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2_song5.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song1.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song2.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song3.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song4.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3_song5.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song1.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song2.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song3.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song4.mp4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4_song5.mp4
+[root@bharatitgyan ~]# ls -l album*|cut -d_ -fi
+cut: invalid byte, character or field list
+Try 'cut --help' for more information.
+[root@bharatitgyan ~]# ls -l album*|cut -d -fi
+cut: the delimiter must be a single character
+Try 'cut --help' for more information.
+[root@bharatitgyan ~]# ls -l album*|cut -d -f1
+cut: the delimiter must be a single character
+Try 'cut --help' for more information.
+[root@bharatitgyan ~]# ls -l album*|cut -d_ -f1
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album1
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album2
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album3
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4
+-rw-r--r--. 1 root root 0 Aug  9 17:08 album4
+[root@bharatitgyan ~]# ls album*|cut -d_ -f1
+album1
+album1
+album1
+album1
+album1
+album2
+album2
+album2
+album2
+album2
+album3
+album3
+album3
+album3
+album3
+album4
+album4
+album4
+album4
+album4
+[root@bharatitgyan ~]# ls album*|cut -d_ -f1|sort|uniq
+album1
+album2
+album3
+album4
+[root@bharatitgyan ~]# ls album*|cut -d_ -f1|sort|uniq exac rm -fr \
+> .
+uniq: r: invalid number of fields to skip
+[root@bharatitgyan ~]# ls album*|cut -d_ -f1|sort|uniq -exac rm -rf -d {} \;
+uniq: invalid option -- 'e'
+Try 'uniq --help' for more information.
+[root@bharatitgyan ~]# ls album*|cut -d_ -f1  -exac rm -rf -d {} \;
+cut: invalid option -- 'e'
+Try 'cut --help' for more information.
+[root@bharatitgyan ~]# find -type f -name "album*" -exac rm -rf -d {} \;
+find: unknown predicate `-exac'
+[root@bharatitgyan ~]# find -type f -name "album*" -exec rm -rf -d {} \;
+[root@bharatitgyan ~]# ls -tlr
+total 40
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+[root@bharatitgyan ~]# touch album{1..4}_song{1..5}.mp4
+[root@bharatitgyan ~]# ls -tlr
+total 40
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song5.mp4
+[root@bharatitgyan ~]# find -type f -name "album2" -exec rm -rf -d {} \;
+[root@bharatitgyan ~]# ls -tlr
+total 40
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album2_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song5.mp4
+[root@bharatitgyan ~]# find -type f -name "album2*" -exec rm -rf -d {} \;
+[root@bharatitgyan ~]# ls -tlr
+total 40
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album4_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song5.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song4.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song3.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song2.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album3_song1.mp4
+-rw-r--r--. 1 root root     0 Aug  9 17:20 album1_song5.mp4
+[root@bharatitgyan ~]# find -type f -name "album*" -exec rm -rf {} \;
+[root@bharatitgyan ~]# ls -tlr
+total 40
+-rw-------. 1 root root  1466 Feb 18 16:11 anaconda-ks.cfg
+-rw-r--r--. 1 root root    23 Mar  6 21:09 big.txt
+-rw-r--r--. 1 root root  9883 Mar 15 22:30 log.txt
+-rw-r--r--. 1 root root 10476 Mar 15 22:46 packages.txt
+drwxr-xr-x. 2 root root     6 Mar 16 19:26 root
+-rw-r--r--. 1 root root   990 Mar 20 16:18 cpu.txt
+-rw-r--r--. 1 root root  1454 Mar 20 16:19 Memory.txt
+[root@bharatitgyan ~]

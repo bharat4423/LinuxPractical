@@ -1,0 +1,17 @@
+
+Q.Write a script or terminal command for creating multiple directory in one command
+
+mkdir -p heroines/{sunny,katrina,kareena,karishma}/{jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec}_202{0,1,2,3}
+
+Q.Write a script or terminal command for creating multiple files in directory
+touch heroines/{sunny,katrina,kareena,karishma}/{jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec}_202{0,1,2,3}/schedule_{1..31}.txt
+
+Q.Write a script or terminal command for seraching ending with 2022 in Directories.
+
+find -type d -name "*2020" | cat -n
+
+mkdir -p x/x1/x1{1,2} x/x2 y/y1/y1{1,2} y/y2
+
+
+Wirte a command for display only line number 6 in linux.
+
