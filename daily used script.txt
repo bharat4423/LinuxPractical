@@ -1,6 +1,4 @@
 
-DevOps Shack
-30 Real-Time Shell-Scripts Usecases With Example Codes
 1. Automated Backup Script: Create a script to automatically backup files or directories to a specified location.
 Example Code:
 #!/bin/bash
