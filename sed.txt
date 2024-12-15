@@ -1,0 +1,107 @@
+Stream Editor (SED)
+----------------------
+emp.dat ----> raw data
+root@BharatITgyan:~# cat emp.dat
+eno|ename|esal|eaddr|dept|gender
+100|sunny|1000|mumbai|admin|female
+200|bunny|2000|chennai|sales|male
+300|chinny|3000|delhi|accounting|female
+400|vinny|4000|hyderabad|admin|male
+500|pinny|5000|mumbai|sales|female
+
+1) Display Specific Line Multiple Times:
+root@BharatITgyan:~#  sed '2p' emp.dat
+ p means print It will display total file content but 2nd line will be displayed 2 times.
+
+2) Display only specific Line: 
+root@BharatITgyan:~# sed -n '3p' emp.dat ---->It will display only 3rd line
+root@BharatITgyan:~# cat -n emp.dat | sed -n '6p' -->It will display only 3rd line with number and cat
+
+3) Display Last Line:
+root@BharatITgyan:~# sed -n '$p' emp.dat $ ---->means last line
+
+4) Display Multiple Lines in Range:
+root@BharatITgyan:~# sed -n '2,4p' emp.dat ---->It will display from 2nd to 4th lines.
+root@BharatITgyan:~# cat -n emp.dat | sed -n '2,4p' ---->It will display from 2nd to 4th lines with number using cat
+
+root@BharatITgyan:~# sed -n -e '1p' -e '3p' -e '5p' emp.dat ---> It will display specific line in the data
+root@BharatITgyan:~# cat -n emp.dat | sed -n -e '1p' -e '3p' -e '5p'
+root@BharatITgyan:~# cat -n emp.dat | sed -ne '1p;3p;5p'
+
+5) Display all Lines except specific Line: 
+root@BharatITgyan:~#sed -n '2p' emp.dat ---> It will display only 2nd line
+root@BharatITgyan:~#sed -n '2!p' emp.dat ---> It will display all lines except 2nd line
+
+6) Display all Lines except Range of Lines:
+root@BharatITgyan:~#sed -n '2,4p' emp.dat  ---> It will display all lines from 2nd to 4th.
+root@BharatITgyan:~#sed -n '2,4!p' emp.dat ---> It will display all lines except 2 to 4.
+
+Note: We can use cut command to read data column wise, where as we can use sed command to read row wise data.
+
+7) Display all Lines having specific Word:
+root@BharatITgyan:~#sed -n '/admin/p' emp.dat ---> It will display all lines which contains admin.
+
+8) Deleting Data Present in the File:
+root@BharatITgyan:~#sed '3d' emp.dat 
+	---> d means deletion While displaying records, it will delete 3rd record. But this line won't be deleted in the file.
+root@BharatITgyan:~#sed '$d' emp.dat 
+	---> While displaying records, it will delete last record. But this line won't be deleted in the file.
+root@BharatITgyan:~#sed '1d' emp.dat 
+	---> While displaying records, it will delete first record. But this line won't be deleted in the file.
+root@BharatITgyan:~#sed -i '5d' emp.dat 
+	---> -i meant for deleting record permanently in the file. This command won't display anything to the console but 5th record in the file will be deleted.
+root@BharatITgyan:~#sed -i '1,$d' emp.dat 
+	---> It will delete all records from 1st to last in the file. Now file will become empty. (To delete range of records)
+root@BharatITgyan:~#sed -i '1d > $d' emp.dat 
+	---> After 1d we are using enter key. It will delete first and last records.
+	
+root@BharatITgyan:~# sed -ie '1d;3d;5d' emp.dat --delete 1st, 3rd, and 5th line permanently
+
+***Replacing Data Present in the File***
+------------------------------------------
+ We have to use s option. s means substitute.
+ g option --> g means global means every occurrence.
+ without g --> only first occurrence in every line.
+
+demo.txt 
+bharat soft bharat solutions 
+bharat tech bharat soft 
+bharat jobs training
+
+1)root@BharatITgyan:~#sed 's/bharat/linux/g' demo.txt 
+It will replace all occurrences of bharat with linux while displaying the content. It won't modify file content.
+2)root@BharatITgyan:~#sed 's/bharat/linux/' demo.txt
+
+ It will replace only first occurrence in every line of bharat with linux while displaying the content. It won't modify file content.
+
+root@BharatITgyan:~# sed 's/bharat/linux/g' demo.txt linux soft linux solutions linux tech linux soft linux jobs training 
+
+root@BharatITgyan:~# sed 's/bharat/linux/' demo.txt linux soft bharat solutions linux tech bharat soft linux jobs training
+
+
+3) $ sed 's/BHARAT/linux/gi' demo.txt While performing replacement to ignore case.
+4) $ sed -i 's/BHARAT/linux/gi' demo.txt To replace permanently in the file. This command won't display anything to the console.
+5) root@BharatITgyan:~# sed -i 's/^$/ I like IT/g' demo.txt
+ It replaces every blank line with 'I Like Sunny'
+
+root@BharatITgyan:~# cat demo.txt
+bharat soft bharat solutions
+ I like IT
+bharat tech bharat soft
+ I like IT
+bharat jobs training
+
+6) $ sed -i 's/\<sunny\>//gi' demo.txt 
+It deletes every occurrence of sunny in the file. Here case won't be considered.
+
+7) $ sed -i 's/\<[0-9][0-9][0-9]\>//g' demo.txt
+ It will delete all 3-digit words
+
+-------------------------------------------------------------
+
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+
+sed -i 'regex' [file_path]
+
+sed -i '$s/$/\n192.168.20.163 master master.madhur.com/' /etc/hosts
+
