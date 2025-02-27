@@ -1,0 +1,174 @@
+#!/bin/bash
+#With time stamp
+# Define SSH configuration file and backup path
+SSHD_CONFIG="/etc/ssh/sshd_config"
+BACKUP_FILE="${SSHD_CONFIG}.bak_$(date +%F_%T)"
+LOG_FILE="/var/log/ssh_user_removal.log"
+TEMP_BEFORE="/tmp/sshd_config_before.tmp"
+TEMP_AFTER="/tmp/sshd_config_after.tmp"
+TEMP_DIFF="/tmp/sshd_config_diff.tmp"
+
+# Users to remove (space-separated list)
+REMOVE_USERS="ge502305345 ge502305643 ge502305832"
+
+# Backup the original file before making changes
+cp "$SSHD_CONFIG" "$BACKUP_FILE"
+
+# Capture "BEFORE" state of AllowUsers
+awk '/^AllowUsers / {print}' "$SSHD_CONFIG" > "$TEMP_BEFORE"
+
+# Modify only the AllowUsers line without affecting other lines
+sed -E -i '
+/^AllowUsers / {
+    '"$(printf 's/\\<%s\\>//g;' $REMOVE_USERS)"'  # Remove each user
+    s/  +/ /g  # Remove extra spaces
+    s/^AllowUsers *$//  # Remove AllowUsers line if empty
+}' "$SSHD_CONFIG"
+
+# Capture "AFTER" state of AllowUsers
+awk '/^AllowUsers / {print}' "$SSHD_CONFIG" > "$TEMP_AFTER"
+
+# Generate a labeled diff output
+echo "===== SSH Configuration Change Summary =====" > "$TEMP_DIFF"
+echo -e "\n🔹 BEFORE Removing Users:\n" >> "$TEMP_DIFF"
+cat "$TEMP_BEFORE" >> "$TEMP_DIFF"
+
+echo -e "\n🔹 AFTER Removing Users:\n" >> "$TEMP_DIFF"
+cat "$TEMP_AFTER" >> "$TEMP_DIFF"
+
+# Save changes to log file
+cat "$TEMP_DIFF" > "$LOG_FILE"
+
+# Restart SSH service to apply changes
+systemctl restart sshd
+
+# Display final output for ticket evidence
+cat "$LOG_FILE"
+echo "Users removed successfully. Changes logged in $LOG_FILE"
+
+
+---------------------------------------------------------------------
+
+#!/bin/bash
+#Without time stamp
+# Define SSH configuration file and backup path
+SSHD_CONFIG="/etc/ssh/sshd_config"
+BACKUP_FILE="${SSHD_CONFIG}.bak_$(date +%F)"
+LOG_FILE="/var/log/ssh_user_removal.log"
+TEMP_BEFORE="/tmp/sshd_config_before.tmp"
+TEMP_AFTER="/tmp/sshd_config_after.tmp"
+TEMP_DIFF="/tmp/sshd_config_diff.tmp"
+
+# Users to remove (space-separated list)
+REMOVE_USERS="ge502305345 ge502305643 ge502305832"
+
+# Backup the original file before making changes
+cp "$SSHD_CONFIG" "$BACKUP_FILE"
+
+# Capture "BEFORE" state of AllowUsers
+awk '/^AllowUsers / {print}' "$SSHD_CONFIG" > "$TEMP_BEFORE"
+
+# Modify only the AllowUsers line without affecting other lines
+sed -E -i '
+/^AllowUsers / {
+    '"$(printf 's/\\<%s\\>//g;' $REMOVE_USERS)"'  # Remove each user
+    s/  +/ /g  # Remove extra spaces
+    s/^AllowUsers *$//  # Remove AllowUsers line if empty
+}' "$SSHD_CONFIG"
+
+# Capture "AFTER" state of AllowUsers
+awk '/^AllowUsers / {print}' "$SSHD_CONFIG" > "$TEMP_AFTER"
+
+# Generate a labeled diff output
+echo "===== SSH Configuration Change Summary =====" > "$TEMP_DIFF"
+echo -e "\n🔹 BEFORE Removing Users:\n" >> "$TEMP_DIFF"
+cat "$TEMP_BEFORE" >> "$TEMP_DIFF"
+
+echo -e "\n🔹 AFTER Removing Users:\n" >> "$TEMP_DIFF"
+cat "$TEMP_AFTER" >> "$TEMP_DIFF"
+
+# Save changes to log file
+cat "$TEMP_DIFF" > "$LOG_FILE"
+
+# Restart SSH service to apply changes
+systemctl restart sshd
+
+# Display final output for ticket evidence
+cat "$LOG_FILE"
+echo "Users removed successfully. Changes logged in $LOG_FILE"
+
+
+--------------------------------------------------------------------
+Output :- 
+
+[root@lvm ssh]# bash remove_allowusers.sh
+===== SSH Configuration Change Summary =====
+
+🔹 BEFORE Removing Users:
+
+AllowUsers user1 user2 ge502305243 ge502305244 ge502305247 ge502305354 ge502305345 ge502305643 ge502305832
+AllowUsers sapadmin user4
+AllowUsers appadmin samdmin user3
+
+🔹 AFTER Removing Users:
+
+AllowUsers user1 user2 ge502305243 ge502305244 ge502305247 ge502305354
+AllowUsers sapadmin user4
+AllowUsers appadmin samdmin user3
+Users removed successfully. Changes logged in /var/log/ssh_user_removal.log
+
+-------------------------------------------------------------------------------------
+
+#Without Before After 
+
+#!/bin/bash
+
+# Define SSH configuration file and backup path
+SSHD_CONFIG="/etc/ssh/sshd_config"
+BACKUP_FILE="${SSHD_CONFIG}.bak_$(date +%F)"
+LOG_FILE="/var/log/ssh_user_removal.log"
+TEMP_DIFF="/tmp/sshd_config_diff.tmp"
+
+# Users to remove (space-separated list)
+REMOVE_USERS="ge502305345 ge502305643 ge502305832"
+
+# Backup the original file before making changes
+cp "$SSHD_CONFIG" "$BACKUP_FILE"
+
+# Modify only the AllowUsers line without affecting other lines
+sed -E -i '
+/^AllowUsers / {
+    '"$(printf 's/\\<%s\\>//g;' $REMOVE_USERS)"'  # Remove each user
+    s/  +/ /g  # Remove extra spaces
+    s/^AllowUsers *$//  # Remove AllowUsers line if empty
+}' "$SSHD_CONFIG"
+
+# Generate diff but only keep AllowUsers changes
+diff -u "$BACKUP_FILE" "$SSHD_CONFIG" | awk '
+    /^(---|\+\+\+|@@)/ { next }  # Skip diff headers
+    /^[-+]/ && /AllowUsers/ { print }  # Show only AllowUsers changes
+' > "$TEMP_DIFF"
+
+# Save filtered output to log file
+echo "===== SSH Configuration Difference =====" > "$LOG_FILE"
+cat "$TEMP_DIFF" >> "$LOG_FILE"
+
+# Restart SSH service to apply changes
+systemctl restart sshd
+
+# Display the filtered difference for ticket evidence
+cat "$LOG_FILE"
+echo "Users removed successfully. Changes logged in $LOG_FILE"
+
+--------------------------------------------------------------------
+
+Output:-
+
+[root@lvm ssh]# bash remove_allowusers.sh
+===== SSH Configuration Difference =====
+-AllowUsers user1 user2 ge502305243 ge502305244 ge502305247 ge502305354 ge502305345 ge502305643 ge502305832
++AllowUsers user1 user2 ge502305243 ge502305244 ge502305247 ge502305354
+Users removed successfully. Changes logged in /var/log/ssh_user_removal.log
+[root@lvm ssh]#
+
+----------------------------------------
