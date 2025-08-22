@@ -1,0 +1,198 @@
+*************Reverse Proxy Installation*************************
+
+Network- NAT and Hostonly
+
+yum install nginx -y
+cd /etc/nginx
+vim nginx.conf
+
+Edit:
+
+# Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+# add below locations commands
+        location / {
+        proxy_pass http://localhost/;
+
+        }
+        location /linux {
+        proxy_pass http://10.10.10.132/;
+
+        }
+        location /win {
+        proxy_pass http://10.10.10.135:9000/;
+
+        }
+}
+
+:wq
+
+savefile
+
+then run this command for allow HTTP
+
+firewall-cmd --add-service=http
+
+
+
+
+--------------On Linux Webserver----------------------
+Network- Hostonly
+
+yum install http -y
+systemctl status firewalld.service 
+firewall-cmd --add-service=http
+cd /var/www/html/
+cat index.html 
+
+
+
+
+
+
+
+
+
+
+
+
+--------------On Windows Webserver----------------------
+Network- Hostonly
+
+Deploy webserver in windows and check it, is working fine.
+
+
+
+
+*********************Nginx*******************
+
+
+
+vim nginx.conf
+edit:
+
+# Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    upstream hpcsa {
+        least_conn;
+        server 10.10.10.132;
+        server 10.10.10.135;
+        }
+    server {
+        listen       80;
+        listen       [::]:80;
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+
+        location / {
+        proxy_pass http://hpcsa/;
+
+        }
+
+    }
+
+
+:wq
+
+
+After saving restart the nginx service
+
+
+systemctl restart nginx.service
+
+
+-------------------------------------------
+Assignment:
+
+
+										
+										
+reverse nat-ip/app1				    APP1-------Website on 8500
+										\______Website on 9000
+										
+			app2					APP2 ------Website on 9500
+										\______Website on 9800
+										
+										
+
+
+										
+Go to the windows web server and make below website.
+
+
+
+
+then go to the reverse proxy server.										
+vim nginx.conf
+Edit:-
+
+# Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    upstream app1 {
+        server 10.10.10.139:8500;
+        server 10.10.10.139:8600;
+        }
+
+    upstream app2 {
+        server 10.10.10.139:8700;
+        server 10.10.10.139:8800;
+        }
+	server {
+        listen       80;
+        listen       [::]:80;
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        error_page 404 /404.html;
+        location = /404.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        }
+
+        location / {
+                proxy_pass http://localhost/;
+
+        }
+
+        location /app1 {
+                proxy_pass http://app1/;
+        }
+
+        location /app2 {
+                proxy_pass http://app2/;
+        }
+
+:wq
+savefile
+
+then go to the reverse proxy server.
